@@ -1,7 +1,7 @@
 "use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import InputField from "@/components/shared/input";
 import Button from "@/components/shared/button";
 import AppLoginLayout from "../layout";
@@ -9,11 +9,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { showErrorToast } from "@/utils/toast";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 //
 const LoginView = () => {
+  const [passwordShow, setPasswordShow] = useState(false);
   const { login } = useUser();
   const router = useRouter();
+
+  const handlePasswordShow = () => {
+    setPasswordShow(!passwordShow);
+  };
 
   // Formik setup
   const formik = useFormik({
@@ -66,15 +72,30 @@ const LoginView = () => {
             error={formik.touched.username ? formik.errors.username : undefined}
             placeholder="Enter username here"
           />
-          <InputField
-            type="password"
-            name="password"
-            label={"Password"}
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            error={formik.touched.password ? formik.errors.password : undefined}
-            placeholder="Enter password here"
-          />
+          <div className="relative">
+            <InputField
+              type={passwordShow ? "text" : "password"}
+              name="password"
+              label={"Password"}
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              error={
+                formik.touched.password ? formik.errors.password : undefined
+              }
+              placeholder="Enter password here"
+            />
+            <div
+              className="absolute right-3 top-10 text-lg cursor-pointer w-5 h-5"
+              onClick={handlePasswordShow}
+            >
+              {!passwordShow && (
+                <IoEye className="text-[20px] text-[#3E47464D]" />
+              )}
+              {passwordShow && (
+                <IoEyeOff className="text-[20px] text-[#3E47464D]" />
+              )}
+            </div>
+          </div>
           <Button type="filled" action="submit">
             Login
           </Button>

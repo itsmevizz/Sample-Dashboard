@@ -1,4 +1,3 @@
-"use client";
 import DashboardView from "@/view/dashboard";
 
 const DashboardPage = () => {

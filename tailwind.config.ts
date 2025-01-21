@@ -30,7 +30,8 @@ export default {
       container: {
         center: true, // Optional: Centers the container horizontally
         padding: {
-          DEFAULT: "2.5rem", // This is equivalent to pl-10 pr-10 (40px on both sides)
+          DEFAULT: "1rem", // This is equivalent to pl-10 pr-10 (40px on both sides)
+          md: "2.5rem",
         },
       },
     },

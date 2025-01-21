@@ -1,7 +1,7 @@
 "use client";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import InputField from "@/components/shared/input";
 import Button from "@/components/shared/button";
@@ -9,10 +9,16 @@ import AppLoginLayout from "../layout";
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
 import { showErrorToast, showSuccessToast } from "@/utils/toast";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const SignupView = () => {
+  const [passwordShow, setPasswordShow] = useState(false);
   const router = useRouter();
   const { register } = useUser();
+
+  const handlePasswordShow = () => {
+    setPasswordShow(!passwordShow);
+  };
 
   // Validation Schema
   const validationSchema = yup.object({
@@ -92,19 +98,32 @@ const SignupView = () => {
             placeholder="Enter password"
             error={formik.touched.password ? formik.errors.password : undefined}
           />
-          <InputField
-            type="password"
-            name="confirmPassword"
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
-            label="Confirm Password"
-            placeholder="Confirm password"
-            error={
-              formik.touched.confirmPassword
-                ? formik.errors.confirmPassword
-                : undefined
-            }
-          />
+          <div className="relative">
+            <InputField
+              type={passwordShow ? "text" : "password"}
+              name="confirmPassword"
+              value={formik.values.confirmPassword}
+              onChange={formik.handleChange}
+              label="Confirm Password"
+              placeholder="Confirm password"
+              error={
+                formik.touched.confirmPassword
+                  ? formik.errors.confirmPassword
+                  : undefined
+              }
+            />
+            <div
+              className="absolute right-3 top-10 text-lg cursor-pointer w-5 h-5"
+              onClick={handlePasswordShow}
+            >
+              {!passwordShow && (
+                <IoEye className="text-[20px] text-[#3E47464D]" />
+              )}
+              {passwordShow && (
+                <IoEyeOff className="text-[20px] text-[#3E47464D]" />
+              )}
+            </div>
+          </div>
           <Button type="filled" action="submit">
             Signup
           </Button>

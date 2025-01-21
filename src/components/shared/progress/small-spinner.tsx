@@ -1,9 +1,9 @@
-const SmallSpinner = ({ className }) => {
+const SmallSpinner = ({ className }: { className: string }) => {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`w-8 h-8 mr-2 text-primary-main animate-spin dark:text-primary-main fill-primary-light ${className}`}
+        className={`w-8 h-8 mr-2 text-primary-main animate-spin  fill-gray-500 ${className}`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,5 @@
 "use client";
+import dayjs from "dayjs";
 import {
   createContext,
   useContext,
@@ -12,10 +13,13 @@ interface User {
   name: string;
   isAdmin: boolean;
   password: string;
+  dateOfJoin?: string;
 }
 
 interface UserContextProps {
   user: User | null;
+  users: User[];
+  isLoggedIn: boolean;
   login: (username: string, password: string) => boolean;
   logout: () => void;
   register: (user: User) => boolean;
@@ -28,12 +32,14 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [user, setUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]); // Store registered users (can be fetched from API or localStorage)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   // On initial load, check if user data is stored in localStorage
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser)); // Set user if found in localStorage
+      setIsLoggedIn(true);
     }
     const storedUsers = localStorage.getItem("users");
     if (storedUsers) {
@@ -61,6 +67,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 
     if (foundUser) {
       setUser(foundUser);
+      setIsLoggedIn(true);
       localStorage.setItem("user", JSON.stringify(foundUser)); // Store user data in localStorage
       return true;
     }
@@ -70,6 +77,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 
   const logout = () => {
     setUser(null);
+    setIsLoggedIn(false);
     localStorage.removeItem("user"); // Remove user data from localStorage
   };
 
@@ -82,20 +90,32 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
       return false; // Can't create user or admin username is reserved
     }
 
+    // Get the current date formatted as "DD/MM/YYYY"
+    const currentDate = dayjs().format("DD/MM/YYYY");
+
+    // Create the user object with the dateOfJoin field
+    const userWithDateOfJoin: User = {
+      ...newUser,
+      dateOfJoin: currentDate,
+    };
+
     // Register the user
     setUsers((prevUsers) => {
-      const updatedUsers = [...prevUsers, newUser];
+      const updatedUsers = [...prevUsers, userWithDateOfJoin];
       localStorage.setItem("users", JSON.stringify(updatedUsers)); // Store updated users in localStorage
       return updatedUsers;
     });
 
     setUser(newUser);
+    setIsLoggedIn(true);
     localStorage.setItem("user", JSON.stringify(newUser)); // Store user data in localStorage
     return true;
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout, register }}>
+    <UserContext.Provider
+      value={{ user, users, isLoggedIn, login, logout, register }}
+    >
       {children}
     </UserContext.Provider>
   );

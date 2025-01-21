@@ -12,8 +12,8 @@ const AppLoginLayout = ({ children }: { children: ReactNode }) => {
       </div>
       {/*  */}
       {/* Side Image Hero */}
-      <div className="md:grid hidden w-[60%] h-full  place-content-center items-center bg-primary-main">
-        <img className="h-full w-[55vw]" src="/assets/DrImage.webp" />
+      <div className="md:flex hidden w-[60%] h-full items-end bg-gradient-to-l from-primary-main to-transparent">
+        <img className="w-[50vw]" src="/assets/DrImage.webp" />
       </div>
     </div>
   );
