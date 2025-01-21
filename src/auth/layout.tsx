@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode } from "react";
 
 const AppLoginLayout = ({ children }: { children: ReactNode }) => {
@@ -12,7 +13,7 @@ const AppLoginLayout = ({ children }: { children: ReactNode }) => {
       {/*  */}
       {/* Side Image Hero */}
       <div className="md:grid hidden w-[60%] h-full  place-content-center items-center bg-primary-main">
-        <img className="h-[90%] w-full" src="/assets/DrImage.webp" />
+        <img className="h-full w-[55vw]" src="/assets/DrImage.webp" />
       </div>
     </div>
   );

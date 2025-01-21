@@ -70,8 +70,7 @@ const SignupView = () => {
             name="username"
             value={formik.values.username}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            title="Username"
+            label="Username"
             placeholder="Enter username"
             error={formik.touched.username ? formik.errors.username : undefined}
           />
@@ -80,8 +79,7 @@ const SignupView = () => {
             name="name"
             value={formik.values.name}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            title="Name"
+            label="Name"
             placeholder="Enter name"
             error={formik.touched.name ? formik.errors.name : undefined}
           />
@@ -90,8 +88,7 @@ const SignupView = () => {
             name="password"
             value={formik.values.password}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            title="Password"
+            label="Password"
             placeholder="Enter password"
             error={formik.touched.password ? formik.errors.password : undefined}
           />
@@ -100,8 +97,7 @@ const SignupView = () => {
             name="confirmPassword"
             value={formik.values.confirmPassword}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            title="Confirm Password"
+            label="Confirm Password"
             placeholder="Confirm password"
             error={
               formik.touched.confirmPassword
@@ -114,10 +110,10 @@ const SignupView = () => {
           </Button>
         </form>
         {/*  */}
-        <div className="flex justify-center gap-2 text-text-light">
+        <div className="flex justify-center gap-2 font-geist-regular">
           Have an account? {"  "}
           <Link href={"/login"}>
-            <span className="hover:text-primary-main text-primary-light cursor-pointer hover:scale-105 duration-200">
+            <span className="hover:text-primary-main cursor-pointer hover:scale-105 duration-200">
               {" "}
               Login
             </span>

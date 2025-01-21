@@ -50,7 +50,7 @@ const AppHeader = () => {
         {/* User Profile and Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <div
-            className="w-fit h-fut bg-primary-main bg-opacity-50 rounded-[50px] flex items-center pl-1 pt-1 pb-1 pr-2 gap-3"
+            className="w-fit h-fut bg-primary-main bg-opacity-50 rounded-[50px] flex items-center pl-1 pt-1 pb-1 pr-3 gap-3 cursor-pointer"
             onClick={() => setShowDropdown((prev) => !prev)}
           >
             <img

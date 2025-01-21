@@ -42,14 +42,29 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   const login = (username: string, password: string): boolean => {
-    const foundUser = users.find(
-      (u) => u.username === username && u.password === password
-    );
+    let foundUser;
+
+    // Check if it's the admin user
+    if (username === "admin" && password === "admin") {
+      foundUser = {
+        username: "admin",
+        name: "Admin User",
+        isAdmin: true,
+        password: "admin",
+      };
+    } else {
+      // Check among regular users
+      foundUser = users.find(
+        (u) => u.username === username && u.password === password
+      );
+    }
+
     if (foundUser) {
       setUser(foundUser);
       localStorage.setItem("user", JSON.stringify(foundUser)); // Store user data in localStorage
       return true;
     }
+
     return false;
   };
 

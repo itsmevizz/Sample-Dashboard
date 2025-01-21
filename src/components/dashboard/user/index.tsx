@@ -1,4 +1,5 @@
 "use client";
+import SmallCard from "@/components/shared/small-card";
 import { useUser } from "@/context/UserContext";
 import { getGreeting } from "@/utils/getGreeting";
 
@@ -15,6 +16,14 @@ const UserNameSection = () => {
             </h1>
           </div>
         </div>
+      </div>
+      {/* Cards */}
+      <div className="p-10">
+        {user?.isAdmin && (
+          <div className="duration-300 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-5">
+            <SmallCard name="vishnu " role="admin" userId="kk" />
+          </div>
+        )}
       </div>
     </div>
   );

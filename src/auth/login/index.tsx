@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { showErrorToast } from "@/utils/toast";
 
+//
 const LoginView = () => {
   const { login } = useUser();
   const router = useRouter();
@@ -26,7 +27,7 @@ const LoginView = () => {
         .min(3, "Username should be at least 3 characters"),
       password: Yup.string()
         .required("Password is required")
-        .min(6, "Password should be at least 6 characters"),
+        .min(3, "Password should be at least 6 characters"),
     }),
     onSubmit: (values) => {
       // Call the login function from context
@@ -50,7 +51,7 @@ const LoginView = () => {
           <h3 className="font-geist-bold text-[32px] text-text-main">
             Welcome back
           </h3>
-          <h5 className="text-text-light mt-3">
+          <h5 className="font-geist-medium mt-3">
             Welcome back! Please enter your details.
           </h5>
         </div>
@@ -59,7 +60,7 @@ const LoginView = () => {
           <InputField
             type="text"
             name="username"
-            title={"Email"}
+            label={"Username"}
             onChange={formik.handleChange}
             value={formik.values.username}
             error={formik.touched.username ? formik.errors.username : undefined}
@@ -68,7 +69,7 @@ const LoginView = () => {
           <InputField
             type="password"
             name="password"
-            title={"Password"}
+            label={"Password"}
             onChange={formik.handleChange}
             value={formik.values.password}
             error={formik.touched.password ? formik.errors.password : undefined}
@@ -79,10 +80,10 @@ const LoginView = () => {
           </Button>
         </form>
         {/*  */}
-        <div className="flex justify-center gap-2 text-text-light">
+        <div className="flex justify-center gap-2 font-geist-regular">
           Don’t have an account? {"  "}
           <Link href={"/signup"}>
-            <span className="hover:text-primary-main text-primary-light cursor-pointer hover:scale-105 duration-200">
+            <span className="hover:text-primary-main cursor-pointer hover:scale-105 duration-200">
               {" "}
               Sign up
             </span>
