@@ -1,6 +1,7 @@
 "use client";
 import { useUser } from "@/context/UserContext";
 import useOutsideClick from "@/hooks/useOutsideClick";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
@@ -33,7 +34,9 @@ const AppHeader = () => {
       <div className="h-[56px]  min-w-full bg-[#FFFFFF] items-center container flex justify-between">
         <div className="flex gap-10">
           <div className="">
-            <img
+            <Image
+              width={200}
+              height={200}
               alt="logo"
               className="h-[34px] w-[77px] "
               src="/assets/logo-main.png"
@@ -47,7 +50,11 @@ const AppHeader = () => {
             className="w-fit h-full bg-primary-main bg-opacity-50 rounded-[50px] flex items-center pl-1 pt-1 pb-1 pr-3 gap-3 cursor-pointer"
             onClick={() => setShowDropdown((prev) => !prev)}
           >
-            <img
+            <Image
+              width={200}
+              height={200}
+              loading="lazy"
+              alt="logo"
               className="h-[32px] rounded-full w-[32px] "
               src="/assets/user_1.png"
             />
@@ -99,7 +106,10 @@ const AppHeader = () => {
           <div className="bg-white text-black rounded-xl font-geist-bold shadow-md absolute top-14 w-[95%]">
             <ul className="w-full h-full  p-3  cursor-pointer border-b">
               <li className="flex items-center gap-3">
-                <img
+                <Image
+                  width={200}
+                  height={200}
+                  alt="user"
                   className="h-[32px] rounded-full w-[32px] "
                   src="/assets/user_1.png"
                 />

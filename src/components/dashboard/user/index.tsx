@@ -11,13 +11,13 @@ const UserNameSection = () => {
   return (
     <div>
       <div>
-        <div className="h-[77px] w-full bg-black ">
+        <div className="h-20 w-full bg-black">
           <div className="flex justify-between container h-full items-center">
-            <span className="md:text-2xl text-xl text-white">
+            <span className="text-xl md:text-2xl text-white">
               <span role="img" aria-label="wave">
                 👋
               </span>
-              {getGreeting()}, {user?.name}
+              {getGreeting()}, {user?.name || ""}
             </span>
           </div>
         </div>
