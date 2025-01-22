@@ -46,6 +46,8 @@ const SignupView = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      console.log("Register attempted with values:", values);
+
       // Register the user
       const success = register({
         username: values.username,
@@ -112,7 +114,9 @@ const SignupView = () => {
                   : undefined
               }
             />
-            <div
+            <button
+              type="button"
+              aria-label="toggle pass visibility"
               className="absolute right-3 top-10 text-lg cursor-pointer w-5 h-5"
               onClick={handlePasswordShow}
             >
@@ -122,7 +126,7 @@ const SignupView = () => {
               {passwordShow && (
                 <IoEyeOff className="text-[20px] text-[#3E47464D]" />
               )}
-            </div>
+            </button>
           </div>
           <Button type="filled" action="submit">
             Signup

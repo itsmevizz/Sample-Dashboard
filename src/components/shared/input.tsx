@@ -33,6 +33,7 @@ const InputField: React.FC<InputFieldProps> = ({
         </label>
       )}{" "}
       <input
+        id={name}
         type={type}
         name={name}
         onChange={onChange}

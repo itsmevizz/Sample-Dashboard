@@ -36,6 +36,7 @@ const LoginView = () => {
         .min(3, "Password should be at least 6 characters"),
     }),
     onSubmit: (values) => {
+      console.log("Login attempted with values:", values);
       // Call the login function from context
       const isLoggedIn = login(values.username, values.password);
 
@@ -84,17 +85,18 @@ const LoginView = () => {
               }
               placeholder="Enter password here"
             />
-            <div
+            <button
+              type="button"
+              aria-label="toggle pass visibility"
               className="absolute right-3 top-10 text-lg cursor-pointer w-5 h-5"
               onClick={handlePasswordShow}
             >
-              {!passwordShow && (
+              {passwordShow ? (
+                <IoEyeOff className="text-[20px] text-[#3E47464D]" />
+              ) : (
                 <IoEye className="text-[20px] text-[#3E47464D]" />
               )}
-              {passwordShow && (
-                <IoEyeOff className="text-[20px] text-[#3E47464D]" />
-              )}
-            </div>
+            </button>
           </div>
           <Button type="filled" action="submit">
             Login
