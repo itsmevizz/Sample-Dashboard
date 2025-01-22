@@ -3,7 +3,6 @@
 import SmallSpinner from "./progress/small-spinner";
 interface ButtonProps {
   children: React.ReactNode;
-  active?: boolean;
   type?: "filled" | "outlined" | "disabled" | "nill";
   action?: "button" | "submit" | "reset";
   className?: string;
@@ -14,7 +13,6 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  active = false,
   type = "nill",
   action = "button",
   className = "",

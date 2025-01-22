@@ -39,7 +39,7 @@ const CloseButton = ({ toastId }: { toastId: string }) => (
 );
 
 export const showErrorToast = (
-  error: any,
+  error: string,
   customToastId: string = "error",
   top: ToastPosition = "top-center",
   duration: number = 2500
@@ -61,7 +61,7 @@ export const showErrorToast = (
 
     // Show the error toast and set activeToastId
     activeToastId = toast.custom(
-      (t: any) => (
+      (t: { id: string; visible: boolean }) => (
         <div
           className={`flex items-center justify-between bg-red-600 text-white py-2 px-4 rounded-md max-w-[50vw]
           transition-transform transform ${
@@ -85,7 +85,7 @@ export const showErrorToast = (
   }
 };
 
-const getErrorMessage = (error: any): string => {
+const getErrorMessage = (error: string): string => {
   try {
     if (typeof error === "string") {
       return error;
@@ -93,6 +93,7 @@ const getErrorMessage = (error: any): string => {
 
     return "Something went wrong.";
   } catch (err) {
+    console.log(err);
     toast.error("An error occurred while displaying the error notification.");
     return "An error occurred.";
   }

@@ -12,9 +12,12 @@ const UserNameSection = () => {
       <div>
         <div className="h-[77px] w-full bg-black ">
           <div className="flex justify-between container h-full items-center">
-            <h1 className="md:text-3xl text-xl text-white">
-              👋 {getGreeting()}, {user?.name}
-            </h1>
+            <span className="md:text-2xl text-xl text-white">
+              <span role="img" aria-label="wave">
+                👋
+              </span>
+              {getGreeting()}, {user?.name}
+            </span>
           </div>
         </div>
       </div>

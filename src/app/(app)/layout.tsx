@@ -22,7 +22,7 @@ export default function RootLayout({
       } else {
         setLoading(false); // Set loading to false if user is logged in
       }
-    }, 200); // Delay
+    }, 10); // Delay
 
     return () => clearTimeout(timer); // Clean up the timer when the component is unmounted
   }, [isLoggedIn, router]);
