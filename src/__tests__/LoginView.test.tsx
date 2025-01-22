@@ -20,7 +20,6 @@ jest.mock("@/utils/toast", () => ({
 }));
 
 describe("LoginView", () => {
-  // Reset mocks before each test
   const mockRouterPush = jest.fn();
   const mockLogin = jest.fn();
   const mockShowErrorToast = showErrorToast;

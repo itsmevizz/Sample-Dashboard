@@ -34,7 +34,7 @@ const UserNameSection = () => {
                 <SmallCard
                   name={user.name}
                   dateOfJoin={user.dateOfJoin}
-                  userId={user.username}
+                  username={user.username}
                 />
               </Fragment>
             ))

@@ -33,7 +33,11 @@ const AppHeader = () => {
       <div className="h-[56px]  min-w-full bg-[#FFFFFF] items-center container flex justify-between">
         <div className="flex gap-10">
           <div className="">
-            <img className="h-[34px] w-[77px] " src="/assets/logo-main.png" />
+            <img
+              alt="logo"
+              className="h-[34px] w-[77px] "
+              src="/assets/logo-main.png"
+            />
           </div>
         </div>
 
