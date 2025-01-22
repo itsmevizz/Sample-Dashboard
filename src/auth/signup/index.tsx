@@ -75,21 +75,21 @@ const SignupView = () => {
         <form onSubmit={formik.handleSubmit} className="space-y-5">
           <InputField
             type="text"
-            name="username"
-            value={formik.values.username}
-            onChange={formik.handleChange}
-            label="Username"
-            placeholder="Enter username"
-            error={formik.touched.username ? formik.errors.username : undefined}
-          />
-          <InputField
-            type="text"
             name="name"
             value={formik.values.name}
             onChange={formik.handleChange}
             label="Name"
             placeholder="Enter name"
             error={formik.touched.name ? formik.errors.name : undefined}
+          />
+          <InputField
+            type="text"
+            name="username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            label="Username"
+            placeholder="Enter username"
+            error={formik.touched.username ? formik.errors.username : undefined}
           />
           <InputField
             type="password"
