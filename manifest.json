@@ -1,7 +1,7 @@
 {
     "name": "mykare app",
     "short_name": "mykare",
-    "start_url": "/",
+    "start_url": "/login",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#00b4b9",

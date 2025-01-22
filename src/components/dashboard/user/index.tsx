@@ -1,8 +1,9 @@
 "use client";
-import SmallCard from "@/components/shared/small-card";
 import { useUser } from "@/context/UserContext";
 import { getGreeting } from "@/utils/getGreeting";
+import dynamic from "next/dynamic";
 import { Fragment } from "react";
+const SmallCard = dynamic(() => import("@/components/shared/small-card"));
 
 const UserNameSection = () => {
   const { user, users } = useUser();
@@ -25,7 +26,7 @@ const UserNameSection = () => {
       <div className="p-10 duration-300 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-5">
         {user?.isAdmin ? (
           users.length === 0 ? (
-            <div className="flex h-[50vh] w-screen justify-center items-center font-geist-bold">
+            <div className="flex h-[50vh] col-span-5 container justify-center items-center font-geist-bold">
               No data to display
             </div>
           ) : (
